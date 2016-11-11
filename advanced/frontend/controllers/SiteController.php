@@ -210,4 +210,8 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionOffline() {
+        return 'Maintenance break';
+    }
 }
