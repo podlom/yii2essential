@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use yii\web\Controller;
+use common\models\News;
 
 
 class NewsController extends Controller
@@ -49,6 +50,13 @@ class NewsController extends Controller
     }
 
     public function actionItemsList()
+    {
+        $newsList = News::find()->all();
+
+        return $this->render('itemsList', ['newsList' => $newsList]);
+    }
+
+    public function actionItemsListOld()
     {
         $newsList = [
             ['date' => 'AUG 29, 2016', 'title' => 'Auth Client extension version 2.1.1 released', 'source_url' => 'http://www.yiiframework.com/news/106/auth-client-extension-version-2-1-1-released/', 'announce' => 'We are very pleased to announce the release of the Auth Client extension version 2.1.1. This release fixes a critical bug: \yii\authclient\BaseClient::createRequest() ignored defaultRequestOptions and requestOptions, which, in particular, was a reason for the error during GitHub authentication process.'],
