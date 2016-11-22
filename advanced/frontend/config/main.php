@@ -44,6 +44,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'GET news-category/view/<slug>' => 'news-category/view',
             ],
         ],
         'i18n' => [
