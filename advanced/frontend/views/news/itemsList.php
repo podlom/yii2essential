@@ -26,3 +26,7 @@ if (!empty($newsList)) {
 } else {
     echo '<div class="no-news-msg">No news has been added yet.</div>';
 }
+
+echo $this->render('//common/footer', [
+    'copyText' => 'Copyright &copy; ' . date('Y') . ' all rights reserved.',
+]);
