@@ -19,6 +19,10 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['admin', 'contentManager', 'SEO'],
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

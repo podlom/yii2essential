@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -24,6 +25,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            /*
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout', 'signup'],
@@ -40,6 +42,7 @@ class SiteController extends Controller
                     ],
                 ],
             ],
+            */
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -131,6 +134,8 @@ class SiteController extends Controller
         }
     }
 
+    
+    
     /**
      * Displays about page.
      *
@@ -138,6 +143,10 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        if (!Yii::$app->user->can('view')) {
+            throw new ForbiddenHttpException('Access denied.');
+        }
+        
         return $this->render('about');
     }
 
